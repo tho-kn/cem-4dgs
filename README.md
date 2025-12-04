@@ -133,7 +133,7 @@ If you find this work useful for your research, please cite:
 @inproceedings{kang2025cem4dgs,
   title={Clustered Error Correction with Grouped 4D Gaussian Splatting},
   author={Kang, Taeho and Park, Jaeyeon and Lee, Kyungjin and Lee, Youngki},
-  booktitle={SIGGRAPH '25: ACM SIGGRAPH 2025 Conference Papers},
+  booktitle = {SIGGRAPH Asia 2025 Conference Papers},
   year={2025}
 }
 ```
