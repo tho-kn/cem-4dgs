@@ -2,7 +2,7 @@
 
 <div align="center">
 
-### [Project Page](https://github.com/tho-kn/CEM4DGS) | [Short Video](https://github.com/tho-kn/CEM4DGS/blob/main/media/video.mov)
+### [Project Page](https://tho-kn.github.io/projects/CEM-4DGS) | [Short Video](https://github.com/tho-kn/CEM4DGS/blob/main/media/video.mov)
 
 **SIGGRAPH Asia 2025**
 
