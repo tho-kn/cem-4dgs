@@ -2,7 +2,7 @@
 
 <div align="center">
 
-### [Project Page](https://tho-kn.github.io/projects/CEM-4DGS) | [Short Video](https://github.com/tho-kn/CEM4DGS/blob/main/media/video.mov) | [arXiv](https://arxiv.org/abs/2511.16112) | [ACM Library](https://github.com/tho-kn/CEM4DGS/blob/main/media/video.mov](https://dl.acm.org/doi/10.1145/3757377.3763858))
+### [Project Page](https://tho-kn.github.io/projects/CEM-4DGS) | [Fast-Forward Video](https://github.com/tho-kn/CEM4DGS/blob/main/media/video.mov) | [arXiv](https://arxiv.org/abs/2511.16112) | [ACM Library](https://dl.acm.org/doi/10.1145/3757377.3763858)
 
 **SIGGRAPH Asia 2025**
 
