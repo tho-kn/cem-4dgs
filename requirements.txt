@@ -8,10 +8,10 @@ scipy
 scikit-image
 imgui_bundle
 imgui
-scikit-image
 imagecodecs[all]
 pynvml
 GPUtil
 pytorch3d
+scikit-learn
 submodules/diff_gaussian_rasterization_df
 submodules/simple-knn

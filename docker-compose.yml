@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  cem4dgs:
+    build: .
+    user: "${UID}:${GID}"
+    image: cem4dgs:latest
+    runtime: nvidia
+    environment:
+      # Use GPU_ID to select specific GPU (e.g., GPU_ID=3)
+      - NVIDIA_VISIBLE_DEVICES=${GPU_ID:-all}
+      # Fix for getpass.getuser() failing on non-existent UID
+      - USER=${USER:-user}
+      - HOME=/tmp
+    volumes:
+      # Mount dataset directory
+      - ${DATASET_PATH:-/data/projects/nerf_data}:/data
+      # Mount current directory for code execution and output
+      - .:/app
+    stdin_open: true
+    tty: true
+    command: /bin/bash
