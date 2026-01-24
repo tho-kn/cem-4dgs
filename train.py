@@ -35,7 +35,6 @@ from arguments import ModelParams, PipelineParams, OptimizationParams
 from utils.stereo_helper import correct_gaussians
 from arguments import find_explicit_args
 import faiss
-import subprocess
 import pprint
 
 try:
@@ -55,10 +54,11 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     
     args.save_iterations.append(args.iterations)
     args.checkpoint_iterations.append(args.iterations)
+    args.test_iterations.append(args.iterations)
     saving_iterations = args.save_iterations
     checkpoint_iterations = args.checkpoint_iterations
-    res = faiss.StandardGpuResources()
-        
+    testing_iterations = args.test_iterations
+    
     with open(os.path.join(args.model_path, "cfg_args"), 'w') as cfg_log_f:
         cfg_log_f.write(pprint.pformat(vars(args)))
 
@@ -87,16 +87,11 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     ema_loss_for_log = 0.0
     progress_bar = tqdm(range(first_iter, opt.iterations), desc="Training progress")
     first_iter += 1
-    nearest_splat_indices = None
-    
-    best_psnr = float('-inf')
-    best_iter = -1
     
     extract_time = 0
     correct_time = 0
     
     iteration = first_iter
-    inject_num = 0
     while iteration <= opt.iterations:
         if network_gui.conn is None:
             network_gui.try_connect()
