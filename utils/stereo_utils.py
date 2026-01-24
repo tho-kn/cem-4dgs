@@ -4,10 +4,14 @@ from .general_utils import inverse_sigmoid
 from scipy.spatial.transform import Rotation as R
 from scipy.ndimage import label
 import cv2
-from sklearn.cluster import DBSCAN, KMeans
+try:
+    import cuml
+    from cuml.cluster import DBSCAN, KMeans
+    cuml.set_global_output_type('numpy')
+except ImportError:
+    from sklearn.cluster import DBSCAN, KMeans
 from pytorch3d.transforms import quaternion_apply, quaternion_multiply, quaternion_invert
 import torchvision
-import os
 import matplotlib.pyplot as plt
 
 
