@@ -13,5 +13,6 @@ pynvml
 GPUtil
 pytorch3d
 scikit-learn
+faiss-gpu
 submodules/diff_gaussian_rasterization_df
 submodules/simple-knn

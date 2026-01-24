@@ -49,10 +49,57 @@ conda activate CEM4DGS
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-4. Install remaining dependencies:
+4. Install PyTorch3D (Required):
+   Follow the [official installation guide](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md).
+   For example (ensure system dependencies like `build-essential` are installed):
+   ```bash
+   pip install "git+https://github.com/facebookresearch/pytorch3d.git"
+   ```
+
+5. Install remaining dependencies:
+   ```bash
+   pip install --upgrade setuptools cython wheel
+   pip install -r requirements.txt
+   ```
+
+## Docker Usage (Recommended)
+
+We provide a Docker implementation to ensure reproducibility and compatibility, especially for newer GPUs (e.g., NVIDIA Blackwell).
+
+### Prerequisites
+- Docker
+- NVIDIA Container Toolkit
+
+### Running the Docker Container
+We provide a helper script `scripts/run_docker.sh` that handles user permissions, volume mounting, and GPU selection.
+
+1. **Build and Start:**
+   To launch an interactive container:
+   ```bash
+   chmod +x scripts/run_docker.sh
+   ./scripts/run_docker.sh
+   # This will build the image (if not present) and drop you into a shell
+   ```
+
+2. **Environment Variables:**
+   You can configure the session using environment variables:
+
+   *   `GPU_ID`: Specific GPU index to use (default: `all`).
+   *   `DATASET_PATH`: Host path to your dataset (default: `/data/projects/nerf_data`).
+
+   Example:
+   ```bash
+   GPU_ID=0 DATASET_PATH=/path/to/my/data ./scripts/run_docker.sh
+   ```
+
+### Training inside Docker
+Once inside the container, you can run training commands as usual. The dataset is mounted at `/data`.
+
 ```bash
-pip install --upgrade setuptools cython wheel
-pip install -r requirements.txt
+# Example training command inside Docker
+python train.py --config configs/techni_s1/train.json \
+                --model_path output/test_experiment \
+                --source_path /data/Technicolor/Trains
 ```
 
 ## Dataset Preparation
