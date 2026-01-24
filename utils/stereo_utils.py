@@ -37,7 +37,7 @@ def add_gaussians(xyz, featuredc, scales, rotations, gaussians, timestamps, opac
         new_xyz_disp = xyz_disp
     
     if opacity is None:
-        new_opacity = inverse_sigmoid(0.9 *torch.ones_like(xyz[:, 0:1]))
+        new_opacity = inverse_sigmoid(0.1 * torch.ones_like(xyz[:, 0:1]))
     else:
         new_opacity = opacity
         
@@ -337,7 +337,7 @@ def get_error_areas(image, gt_image, dynamic_mask=None,
     
     # Calculate masks
     if dynamic_mask is not None:
-        dynamic_diff = diff[dynamic_mask]
+        dynamic_diff = diff[dynamic_mask.cpu()]
         dynamic_threshold = torch.sort(dynamic_diff.flatten())[0][int(dynamic_diff.numel() * (1 - rel_thres))].item()
         rel_outmask = diff >= dynamic_threshold
         outmask = torch.logical_and(rel_outmask, dynamic_mask.to(rel_outmask.device))

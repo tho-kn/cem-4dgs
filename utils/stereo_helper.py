@@ -396,6 +396,7 @@ def correct_gaussians(target_cameras, gaussians, scene, pipe, dataset, backgroun
         dynamic_leniency=-1.0,
         gaussian_blur_size=3,
         nearest_threshold=0.01,
+        use_opacity_est=False,
     ):
     
     new_gss = []
@@ -458,6 +459,8 @@ def correct_gaussians(target_cameras, gaussians, scene, pipe, dataset, backgroun
     gaussians.densify_and_split(target_static_mask=target_gaussian_mask, target_dynamic_mask=target_dynamic_mask)
     num_new_split_gaussians += valid_indices.shape[0] * 2
 
+    if not use_opacity_est: # 0.1 Opacity initialization is more stable
+        new_opacity = None
     num_new_backproject_gaussians = 0
     if new_xyzs is not None:
         num_new_backproject_gaussians = add_gaussians(new_xyzs, new_features_dc, new_scaling, new_rotation, gaussians, new_timestamps, opacity=new_opacity, nearest_threshold=nearest_threshold)
