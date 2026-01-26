@@ -15,11 +15,14 @@ services:
       # Fix for getpass.getuser() failing on non-existent UID
       - USER=${USER:-user}
       - HOME=/tmp
+      - TORCH_HOME=/cache/torch
     volumes:
       # Mount dataset directory
       - ${DATASET_PATH:-/data/projects/nerf_data}:/data
       # Mount current directory for code execution and output
       - .:/app
+      # Persistent cache for weights (PyTorch, etc.)
+      - ./cache:/cache
     stdin_open: true
     tty: true
     command: /bin/bash
