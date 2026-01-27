@@ -246,7 +246,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                                                                     disp_sim_threshold=opt.disp_sim_threshold)
                         extract_end = time.time()
                         extract_time += extract_end - extract_start
-            if iteration % (opt.densification_interval*4) == 0 and iteration < opt.densify_until_iter - 3000:
+            if iteration % (opt.densification_interval*4) == 0 and iteration < opt.densify_until_iter - 3000 and not opt.no_adjust_opa:
                 gaussians.adjust_temp_opa(max_dur=sample_len)
 
             if prune_inv and iteration < opt.iterations and iteration > 3000:

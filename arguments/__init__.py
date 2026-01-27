@@ -154,6 +154,7 @@ class OptimizationParams(ParamGroup):
         self.cec_opacity_threshold = 0.9
         self.cec_dynamic_leniency = -1.0
         self.cec_nearest_threshold = 0.5 # Previously tested with 0.01
+        self.no_adjust_opa = 0
         super().__init__(parser, "Optimization Parameters")
         
 def find_explicit_args(args):

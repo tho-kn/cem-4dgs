@@ -48,7 +48,6 @@
 	"cec_every": 707,
 	"cec_margin_depth": 10,
 	"cec_opacity_threshold": 0.70,
-	"cec_split_unmatched": 1,
 	"cec_start_iter": 0,
 	"cec_until_iter": 50000
 }
